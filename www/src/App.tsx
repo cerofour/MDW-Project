@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import NoPage from "./pages/NoPage";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import CRUD from "./pages/CRUD";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ function App() {
 						<Route path="catalogo" element={<Catalogue />} />
 						<Route path="ayuda" element={<Help />} />
 						<Route path="*" element={<NoPage />} />
+						<Route path="crud" element={<CRUD />} />
 					</Route>
 				</Routes>
 			</Router>

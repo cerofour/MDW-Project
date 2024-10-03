@@ -13,7 +13,7 @@ export default function MyNavbar() {
 		};
 	};
 
-	const navbarTitle = "Biblioteca Municipal de Chiclayo";
+	const navbarTitle = "";
 
 	const navbarLinks = [
 		//x("Bib. MPCH", "/"),
@@ -36,10 +36,9 @@ export default function MyNavbar() {
 				<Container fluid>
 					<Navbar.Brand href="/">
 						<img
-							src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Escudo_de_Armas_la_Ciudad_de_Chiclayo.png/1200px-Escudo_de_Armas_la_Ciudad_de_Chiclayo.png"
-							alt="Logo de la Municipalidad Provincial de Chiclayo"
-							width={40}
-							height={40}
+							src="https://d20f60vzbd93dl.cloudfront.net/uploads/tienda_008846/tienda_008846_16a45f9528ba9b26cc0a996188fd761e9c4ccfe7_logo_small_90.png"
+							alt="Logo de Corefo"
+							width={100}
 						/>
 						{navbarTitle}
 					</Navbar.Brand>
