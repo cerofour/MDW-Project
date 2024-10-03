@@ -1,4 +1,4 @@
-package pe.edu.utp.DemoBibMPCH;
+package pe.edu.utp.CorefoSpringServer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

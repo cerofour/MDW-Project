@@ -1,13 +1,12 @@
-package pe.edu.utp.DemoBibMPCH.controllers;
+package pe.edu.utp.CorefoSpringServer.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import pe.edu.utp.DemoBibMPCH.DAO.AuthorDAO;
-import pe.edu.utp.DemoBibMPCH.DAO.TextResourceDAO;
-import pe.edu.utp.DemoBibMPCH.models.Author;
+import pe.edu.utp.CorefoSpringServer.DAO.AuthorDAO;
+import pe.edu.utp.CorefoSpringServer.models.Author;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package pe.edu.utp.DemoBibMPCH.models;
+package pe.edu.utp.CorefoSpringServer.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;

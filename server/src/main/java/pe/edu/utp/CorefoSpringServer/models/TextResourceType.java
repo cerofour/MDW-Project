@@ -1,4 +1,4 @@
-package pe.edu.utp.DemoBibMPCH.models;
+package pe.edu.utp.CorefoSpringServer.models;
 
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;

@@ -1,5 +1,6 @@
-package pe.edu.utp.DemoBibMPCH.models;
+package pe.edu.utp.CorefoSpringServer.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -69,9 +70,8 @@ public class TextResource {
 
     @Setter
     @Getter
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "tipo_texto_id")
-    @JsonManagedReference
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private TextResourceType type;
 
@@ -86,10 +86,10 @@ public class TextResource {
 
     @Setter
     @Getter
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "editorial_id")
-    @JsonManagedReference
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @JsonBackReference
+    //@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Editorial editorial;
 
 

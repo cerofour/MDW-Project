@@ -1,8 +1,8 @@
 /*IMPORTANT: USE VERSION '8.0.39' > */
 
-CREATE DATABASE BMPCH;
+CREATE DATABASE COREFO_TIENDA_BD;
 
-USE BMPCH;
+USE COREFO_TIENDA_BD;
 
 CREATE TABLE IF NOT EXISTS tipos_estados (
 	id_tipo_estado BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
@@ -70,9 +70,9 @@ CREATE TABLE IF NOT EXISTS direcciones_clientes (
 
 );
 
-CREATE TABLE IF NOT EXISTS tipos_prestamos (
-	id_tipo_prestamo BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
-	tipo_prestamo VARCHAR(255) UNIQUE NOT NULL
+CREATE TABLE IF NOT EXISTS tipos_venta (
+	id_tipo_venta BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
+	tipo_venta VARCHAR(255) UNIQUE NOT NULL
 
 );
 
@@ -106,12 +106,6 @@ CREATE TABLE IF NOT EXISTS generos (
 
 );
 
-CREATE TABLE IF NOT EXISTS estados_prestamos (
-	id_estado_prestamo BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
-	estado_prestamo VARCHAR(255) NOT NULL
-
-);
-
 CREATE TABLE IF NOT EXISTS carnets (
 	id_carnet BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
 	tipo_estado_id BIGINT UNSIGNED NOT NULL,
@@ -138,6 +132,14 @@ CREATE TABLE IF NOT EXISTS recursos_textuales (
 	FOREIGN KEY (editorial_id) REFERENCES editoriales(id_editorial),
     CONSTRAINT chk_numero_paginas CHECK (numero_paginas > 0)
 
+);
+
+CREATE TABLE IF NOT EXISTS precios (
+	recurso_textual_id BIGINT UNSIGNED,
+    precio_compra DECIMAL,
+    precio_venta DECIMAL,
+    
+    FOREIGN KEY (recurso_textual_id) REFERENCES recursos_textuales(id_recurso_textual)
 );
 
 CREATE TABLE IF NOT EXISTS clientes (
@@ -172,22 +174,16 @@ CREATE TABLE IF NOT EXISTS usuarios (
 
 );
 
-CREATE TABLE IF NOT EXISTS prestamos (
-	id_prestamo BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
-	usuario_id BIGINT UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS ventas (
+	id_venta BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
+	cliente_id BIGINT UNSIGNED NOT NULL,
 	recurso_textual_id BIGINT UNSIGNED NOT NULL,
-	tipo_prestamo_id BIGINT UNSIGNED NOT NULL,
-	estado_prestamo_id BIGINT UNSIGNED NOT NULL,
-	fecha_inicial DATETIME NOT NULL DEFAULT (CURRENT_DATE),
-	fecha_final DATETIME DEFAULT NULL,
-	fecha_programada DATETIME NOT NULL,
-	FOREIGN KEY (usuario_id) REFERENCES usuarios(id_usuario),
+	tipo_venta_id BIGINT UNSIGNED NOT NULL,
+	fecha DATETIME NOT NULL DEFAULT (CURRENT_DATE),
+	precio_venta DATETIME DEFAULT NULL,
+	FOREIGN KEY (cliente_id) REFERENCES clientes(id_cliente),
 	FOREIGN KEY (recurso_textual_id) REFERENCES recursos_textuales(id_recurso_textual),
-	FOREIGN KEY (tipo_prestamo_id) REFERENCES tipos_prestamos(id_tipo_prestamo),
-	FOREIGN KEY (estado_prestamo_id) REFERENCES estados_prestamos(id_estado_prestamo),
-    CONSTRAINT chk_fecha_programada CHECK (fecha_programada >= fecha_inicial),
-	CONSTRAINT chk_fecha_final CHECK (fecha_final >= fecha_inicial OR fecha_final IS NULL)
-
+	FOREIGN KEY (tipo_venta_id) REFERENCES tipos_venta(id_tipo_venta)
 );
 	
 CREATE TABLE IF NOT EXISTS recursos_textuales_autores (
